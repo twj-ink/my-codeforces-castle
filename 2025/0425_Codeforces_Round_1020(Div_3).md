@@ -233,5 +233,28 @@ for _ in range(int(input())):
 
 ## E
 ## F
+
+考虑连通性，如果是0，只会在i位置为1，出现上下两部分的0；如果是1，down接着加1，然后把up变为down，down变为0。
+
+```python
+for _ in range(int(input())):
+    n=int(input())
+    s=input()
+    up=0
+    down=0
+    ans=0
+    for i in range(n):
+        if s[i]=='0':
+            up+=i
+            down+=n-i-1
+        else:
+            ans=max(ans,up,down)
+            up=down+1
+            down=0
+            ans=max(ans,up)
+    ans=max(up,down,ans)
+    print(ans)
+```
+
 ## G
 ## H
