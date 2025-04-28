@@ -4,6 +4,10 @@ https://codeforces.com/contest/2104
 
 战绩：AC4 (A,B,C,D)
 
+EFG题在更新tutorial后可能会更新，当然前提是能学会题解。
+
+这场比赛给我的感觉是数学性质极强，A，C，F，G都是和数学强相关的，特别是F和G题。而剩下的题目则是考察标准的数据结构或者算法，D题帮助复习了一下欧拉筛，很好的题目！
+
 ## A: Three Decks
 
 简单数学题，首先用c把a和b之间的差值补齐，然后判断一下c比b的多余值模3是否为0，如果为0说明c多余的部分可以均分，否则答案就是NO。
@@ -152,4 +156,4 @@ for _ in range(int(input())):
 ## F
 ## G
 
-Github链接：
+Github链接：https://github.com/twj-ink/my-codeforces-castle/blob/main/2025/0429_Educational_Codeforces_Round_178(Div_2).md
