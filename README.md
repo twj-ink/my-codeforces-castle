@@ -3,8 +3,10 @@
 
 # 2025 Problem Set
 
-|Date|Contest|
-|:--:|:--:|
-|2025/04/25|[Codeforces Round 1020(Div.3)](2025/0425_Codeforces_Round_1020(Div_3))|
+|    Date    |                                             Contest                                             |
+|:----------:|:-----------------------------------------------------------------------------------------------:|
+| 2025/04/25 |             [Codeforces Round 1020(Div.3)](2025/0425_Codeforces_Round_1020(Div_3))              |
+| 2025/04/29 | [Educational Codeforces Round 178(Div.2)](2025/0429_Educational_Codeforces_Round_178(Div_2).md) |
+
 
 
