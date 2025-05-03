@@ -32,16 +32,16 @@ $$ f(p_{rev})=2 \cdot \sum_{j=1}^{k}(2j-1)=2 \cdot (1+3+5+...+(2k-1))=2 \cdot k^
 
 带入n，和即为 
 
-$ \dfrac{n^2}{2} $ 。
+$$ \dfrac{n^2}{2} $$ 。
 
 二，n=2k+1，此时i取值为[1,2k+1]，但是当i=k时项为0，所以和式的值与一中一致（2乘k^2），
 带入n，和即为 
 
-$ 2 \cdot \lfloor \dfrac{n}{2} \rfloor^2 = \lfloor \dfrac{n^2}{2} \rfloor $ 
+$$ 2 \cdot \lfloor \dfrac{n}{2} \rfloor^2 = \lfloor \dfrac{n^2}{2} \rfloor $$
 
 故和即为 
 
-$ \lfloor \dfrac{n^2}{2} \rfloor $ 
+$$ \lfloor \dfrac{n^2}{2} \rfloor $$
 
 然后考虑到形成这个排列的过程中是采取元素两两相邻互换的方式，则能够取到0到这个最大值之间所有
 的偶数值（包含0），因此答案就是 
@@ -56,5 +56,14 @@ $$ ans = \lfloor \dfrac{\lfloor \dfrac{n^2}{2} \rfloor}{2} \rfloor +1=\lfloor \d
 
 ![https://github.com/twj-ink/my-codeforces-castle/blob/main/img/CR1022A.jpg](https://github.com/twj-ink/my-codeforces-castle/blob/main/img/CR1022A.jpg)
 
+下面给出代码：
 
+```python
+for _ in range(int(input())):
+    n = int(input())
+    print((n ** n) // 4 + 1)
+```
 
+## B
+
+考察异或的位运算，发现cf上好多这种题目，这道题让我联想到了我上大学以来第一次打cf上竞赛的一道题：
