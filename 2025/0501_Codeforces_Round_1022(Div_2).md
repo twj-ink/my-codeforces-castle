@@ -1,5 +1,7 @@
 # Codeforces Round 1022(Div.2)
 
+url:
+
 https://codeforces.com/contest/2108
 
 战绩：AC0 (难绷
@@ -32,7 +34,7 @@ $$ f(p_{rev})=2 \cdot \sum_{j=1}^{k}(2j-1)=2 \cdot (1+3+5+...+(2k-1))=2 \cdot k^
 
 带入n，和即为 
 
-$$ \dfrac{n^2}{2} $$ 。
+$$ \dfrac{n^2}{2} $$
 
 二，n=2k+1，此时i取值为[1,2k+1]，但是当i=k时项为0，所以和式的值与一中一致（2乘k^2），
 带入n，和即为 
@@ -61,7 +63,47 @@ $$ ans = \lfloor \dfrac{\lfloor \dfrac{n^2}{2} \rfloor}{2} \rfloor +1=\lfloor \d
 ```python
 for _ in range(int(input())):
     n = int(input())
-    print((n ** n) // 4 + 1)
+    print((n ** 2) // 4 + 1)
+```
+
+> Let's call the Manhattan value of a permutation† p the value of the expression |p1−1|+|p2−2|+…+|pn−n|.
+
+这道题是 https://codeforces.com/contest/1978/problem/C 的一道简单版本，在该题中，给出排列长度n和这个sum和的值k，
+要求判断是否存在这样的一个排列使得和为k，如果存在输出这个排列，不存在输出No.
+
+判断方式是：如果k为奇数，输出-1；然后计算对于n的Manhattan value的最大值（即n^2//2），如果大于这个数字就输出-1.由于对于其中所有的偶数都能取到，
+那么排列构造的方式可以这样考虑：
+
+对于1,2,...,n，互换1和n，和增加2*(n-1)；互换2和(n-1)，和增加2*(n-3)；那么对于k，可以考虑使用**双指针**：
+左指针和右指针开始指向左右两端，如果k大于当前的互换成本就直接互换，否则只移动右指针来以更小的步伐缩小指针之间的间距。
+
+```python
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    if k & 1:
+        print('No')
+        continue
+
+    max_v = n ** 2 // 2
+    if k > max_v:
+        print('No')
+        continue
+
+    p = [i for i in range(1, n + 1)]
+    i, j = 0, n - 1
+    while i < j:
+        if k >= (curr := 2 * (p[j] - p[i])):
+            k -= curr
+            p[i], p[j] = p[j], p[i]
+            i += 1
+            j -= 1
+        else:
+            j -= 1
+    if k == 0:
+        print('Yes')
+        print(*p)
+    else:
+        print('No')
 ```
 
 ## B
@@ -101,4 +143,33 @@ for _ in range(int(input())):
             print(n)
     else:
         print(x + (max(0, n - c) + 1) // 2 * 2)
+```
+
+## C
+
+自己想出来的思路，可以直观理解成：选择若干个中心点，然后向两边扩散。能否扩散可以想成高山流水，只能从高点流向低点。
+因此就是找到高峰点的个数。
+
+处理是：首先把连续的相同数字删去获得新的数组，然后在首位加上-1保证开头和结尾的两个点也有成为顶点的可能性，
+之后维护一个prev和next来不断比较即可。
+
+```python
+for _ in range(int(input())):
+    _ = int(input())
+    s = list(map(int, input().split()))
+    new_s = []
+    for i in s:
+        if not new_s or i != new_s[-1]:
+            new_s.append(i)
+    n = len(new_s)
+    new_s = [-1] + new_s + [-1]
+    ans = 0
+    prev = new_s[0]
+    next = new_s[2]
+    for i in range(1, n + 1):
+        if prev < new_s[i] and new_s[i] > next:
+            ans += 1
+        prev = new_s[i]
+        next = new_s[i + 2] if i != n else -1
+    print(ans)
 ```
