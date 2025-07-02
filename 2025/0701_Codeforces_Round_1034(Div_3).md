@@ -242,3 +242,6 @@ for _ in range(int(input())):
     solve()
 
 ```
+
+Github链接：
+https://github.com/twj-ink/my-codeforces-castle/blob/main/2025/0701_Codeforces_Round_1034(Div_3).md
