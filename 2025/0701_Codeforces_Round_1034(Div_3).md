@@ -1,6 +1,6 @@
 # Codeforces Round 1034(Div.3)
 
-战绩：AC3（ABC）
+20250701 战绩：AC3（ABC）
 
 url:
 
@@ -243,5 +243,3 @@ for _ in range(int(input())):
 
 ```
 
-Github链接：
-https://github.com/twj-ink/my-codeforces-castle/blob/main/2025/0701_Codeforces_Round_1034(Div_3).md
